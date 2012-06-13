@@ -4,5 +4,7 @@
     <EnableENC>False</EnableENC>
     <ProjectView>ProjectFiles</ProjectView>
     <ServerPort>2181</ServerPort>
+    <SchemaManagementSchemaBuildState>1</SchemaManagementSchemaBuildState>
+    <SchemaManagementLastModelWriteTime>634751651627512132</SchemaManagementLastModelWriteTime>
   </PropertyGroup>
 </Project>
