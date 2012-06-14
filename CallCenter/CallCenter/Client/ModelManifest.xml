@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Documents>
+    <Document FullPath="C:\Users\Administrator\Documents\Visual Studio 2012\Projects\CallCenter\CallCenter\CallCenter\Client\Properties\Client.lsml" Checksum="3F27C590C5FAB0845C589B84A0864A05D8723FE71246257EC1A850523391D3BB" />
+    <Document FullPath="C:\Users\Administrator\Documents\Visual Studio 2012\Projects\CallCenter\CallCenter\CallCenter\Common\Properties\Common.lsml" Checksum="52F5E01761B085190944BC1E5C2711FB4BCC23905043593B03BBCADC7526280C" />
+  </Documents>
+</ModelDocumentManifest>

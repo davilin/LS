@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ApplicationDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ApplicationDataStore">
+    <EntitySet Name="Callers" EntityType="ApplicationDataStore.Caller" store:Type="Tables" Schema="dbo" Table="Callers" />
+    <EntitySet Name="Telephones" EntityType="ApplicationDataStore.Telephone" store:Type="Tables" Schema="dbo" Table="Telephones" />
+    <EntitySet Name="WorkSheets" EntityType="ApplicationDataStore.WorkSheet" store:Type="Tables" Schema="dbo" Table="WorkSheets" />
+    <EntitySet Name="Defendants" EntityType="ApplicationDataStore.Defendant" store:Type="Tables" Schema="dbo" Table="Defendants" />
+    <EntitySet Name="zzzBonds" EntityType="ApplicationDataStore.zzzBond" store:Type="Tables" Schema="dbo" Table="zzzBonds" />
+    <EntitySet Name="Charges" EntityType="ApplicationDataStore.Charge" store:Type="Tables" Schema="dbo" Table="Charges" />
+    <EntitySet Name="ChargeDetails" EntityType="ApplicationDataStore.ChargeDetail" store:Type="Tables" Schema="dbo" Table="ChargeDetails" />
+    <EntitySet Name="BondNotes" EntityType="ApplicationDataStore.BondNote" store:Type="Tables" Schema="dbo" Table="BondNotes" />
+    <EntitySet Name="EmailAddresses" EntityType="ApplicationDataStore.EmailAddress" store:Type="Tables" Schema="dbo" Table="EmailAddresses" />
+    <EntitySet Name="OperatorInfoes" EntityType="ApplicationDataStore.OperatorInfo" store:Type="Tables" Schema="dbo" Table="OperatorInfoes" />
+    <EntitySet Name="Addresses" EntityType="ApplicationDataStore.Address" store:Type="Tables" Schema="dbo" Table="Addresses" />
+    <AssociationSet Name="Caller_Telephone" Association="ApplicationDataStore.Caller_Telephone">
+      <End Role="Caller" EntitySet="Callers" />
+      <End Role="Telephone" EntitySet="Telephones" />
+    </AssociationSet>
+    <AssociationSet Name="WorkSheet_Caller" Association="ApplicationDataStore.WorkSheet_Caller">
+      <End Role="WorkSheet" EntitySet="WorkSheets" />
+      <End Role="Caller" EntitySet="Callers" />
+    </AssociationSet>
+    <AssociationSet Name="WorkSheet_OperatorInfo" Association="ApplicationDataStore.WorkSheet_OperatorInfo">
+      <End Role="WorkSheet" EntitySet="WorkSheets" />
+      <End Role="OperatorInfo" EntitySet="OperatorInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="WorkSheet_Defendant" Association="ApplicationDataStore.WorkSheet_Defendant">
+      <End Role="WorkSheet" EntitySet="WorkSheets" />
+      <End Role="Defendant" EntitySet="Defendants" />
+    </AssociationSet>
+    <AssociationSet Name="WorkSheet_BondNote" Association="ApplicationDataStore.WorkSheet_BondNote">
+      <End Role="WorkSheet" EntitySet="WorkSheets" />
+      <End Role="BondNote" EntitySet="BondNotes" />
+    </AssociationSet>
+    <AssociationSet Name="Defendant_Address" Association="ApplicationDataStore.Defendant_Address">
+      <End Role="Defendant" EntitySet="Defendants" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="Defendant_Charge" Association="ApplicationDataStore.Defendant_Charge">
+      <End Role="Defendant" EntitySet="Defendants" />
+      <End Role="Charge" EntitySet="Charges" />
+    </AssociationSet>
+    <AssociationSet Name="Charge_ChargeDetail" Association="ApplicationDataStore.Charge_ChargeDetail">
+      <End Role="Charge" EntitySet="Charges" />
+      <End Role="ChargeDetail" EntitySet="ChargeDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Caller">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Relationship" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="RelationshipOther" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="WorkSheet_Caller" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Telephone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="PhoneType" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Is1stPreferNumber" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Is2ndPreferNumber" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Caller_Telephone" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkSheet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="OverallStatus" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DetailedStatus" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CBBDefType" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="AKA" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Defendant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="MiddleName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Race" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="WorkSheet_Defendant" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="zzzBond">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Charge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Defendant_Charge" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChargeDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="CaseNumber" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ChargeName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="BondAmount" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Preminum" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Fax" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Post" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Misc" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Admin" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Research" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Transfer" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Discount" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Total" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Charge_ChargeDetail" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BondNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="BondsMan" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="NoteDate" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="NoteTime" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Action" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Notes" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="WorkSheet_BondNote" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmailAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="OperatorInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="WorkSheet_OperatorInfo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="LocalName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="AddressLine1" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="AddressLine2" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="StateOrProvince" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ZIPOrPostalCode" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DBFlag" Type="smallint" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyBy" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyOffice" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Defendant_Address" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="Caller_Telephone">
+    <End Role="Caller" Type="ApplicationDataStore.Caller" Multiplicity="1" />
+    <End Role="Telephone" Type="ApplicationDataStore.Telephone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Caller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Telephone">
+        <PropertyRef Name="Caller_Telephone" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkSheet_Caller">
+    <End Role="WorkSheet" Type="ApplicationDataStore.WorkSheet" Multiplicity="1" />
+    <End Role="Caller" Type="ApplicationDataStore.Caller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkSheet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Caller">
+        <PropertyRef Name="WorkSheet_Caller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkSheet_OperatorInfo">
+    <End Role="WorkSheet" Type="ApplicationDataStore.WorkSheet" Multiplicity="1" />
+    <End Role="OperatorInfo" Type="ApplicationDataStore.OperatorInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkSheet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OperatorInfo">
+        <PropertyRef Name="WorkSheet_OperatorInfo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkSheet_Defendant">
+    <End Role="WorkSheet" Type="ApplicationDataStore.WorkSheet" Multiplicity="1" />
+    <End Role="Defendant" Type="ApplicationDataStore.Defendant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkSheet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Defendant">
+        <PropertyRef Name="WorkSheet_Defendant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkSheet_BondNote">
+    <End Role="WorkSheet" Type="ApplicationDataStore.WorkSheet" Multiplicity="1" />
+    <End Role="BondNote" Type="ApplicationDataStore.BondNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkSheet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BondNote">
+        <PropertyRef Name="WorkSheet_BondNote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Defendant_Address">
+    <End Role="Defendant" Type="ApplicationDataStore.Defendant" Multiplicity="1" />
+    <End Role="Address" Type="ApplicationDataStore.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Defendant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="Defendant_Address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Defendant_Charge">
+    <End Role="Defendant" Type="ApplicationDataStore.Defendant" Multiplicity="1" />
+    <End Role="Charge" Type="ApplicationDataStore.Charge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Defendant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Charge">
+        <PropertyRef Name="Defendant_Charge" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Charge_ChargeDetail">
+    <End Role="Charge" Type="ApplicationDataStore.Charge" Multiplicity="1" />
+    <End Role="ChargeDetail" Type="ApplicationDataStore.ChargeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Charge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChargeDetail">
+        <PropertyRef Name="Charge_ChargeDetail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationSchemaChange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EntityChanges>
+    <EntitySchemaChange IsNew="true" OriginalName="Callers">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="Telephones">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="WorkSheets">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="Defendants">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="ChargeDetails">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="Bonds">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="Charges">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="BondNotes">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="EmailAddresses">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="OperatorInfoes">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="true" OriginalName="Addresses">
+      <PropertyChanges />
+    </EntitySchemaChange>
+    <EntitySchemaChange IsNew="false" OriginalName="Table1Items">
+      <PropertyChanges>
+        <EntityPropertySchemaChange IsNew="true" OriginalName="Id" />
+        <EntityPropertySchemaChange IsNew="true" OriginalName="RowVersion" />
+      </PropertyChanges>
+    </EntitySchemaChange>
+  </EntityChanges>
+</ApplicationSchemaChange>
